@@ -1,7 +1,12 @@
 plugins {
     id "java"
-    id "io.freefair.lombok" version "4.1.1"
+    id "io.freefair.lombok" version "4.1.6"
     id "io.spring.dependency-management" version "1.0.8.RELEASE"
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
 }
 
 subprojects {
@@ -20,6 +25,7 @@ subprojects {
     }
 
     repositories {
+        jcenter()
         mavenCentral()
     }
     
@@ -30,8 +36,4 @@ subprojects {
         }
     }
 
-    dependencies {
-        compileOnly "org.projectlombok:lombok:1.18.10.0"
-        annotationProcessor "org.projectlombok:lombok:1.18.10.0"
-    }
 }

@@ -1,5 +1,6 @@
 package io.pivotal.kafka;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
@@ -28,14 +29,16 @@ public class KafkaBroker {
     }
 
     @Bean
-    public static EmbeddedKafkaBroker broker() {
+    public static EmbeddedKafkaBroker broker() throws Exception {
         log.info("broker");
         EmbeddedKafkaBroker embeddedKafkaBroker = new EmbeddedKafkaBroker(1, false);
         embeddedKafkaBroker.brokerProperties(convert(System.getProperties()));
+        embeddedKafkaBroker.kafkaPorts(9092);
         return embeddedKafkaBroker;
     }
 
-    private static Map<String, String> convert(Properties properties) {
+    private static Map<String, String> convert(Properties properties) throws Exception {
+        log.info("convert: properties={}", new ObjectMapper().writeValueAsString(properties));
         Map<String, String> map = new HashMap<>();
 
         for (Object key : properties.keySet()) {

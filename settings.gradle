@@ -4,4 +4,5 @@ include 'producer'
 include 'common'
 include 'fn-producer'
 include 'fn-consumer'
+include 'embedded-kafka'
 
