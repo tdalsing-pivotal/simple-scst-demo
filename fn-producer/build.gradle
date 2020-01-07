@@ -1,0 +1,9 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.8.RELEASE'
+}
+
+dependencies {
+    implementation(project(':common'))
+    implementation "org.springframework.cloud:spring-cloud-stream-binder-kafka"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+}

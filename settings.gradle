@@ -1,0 +1,7 @@
+rootProject.name = 'simple-scst-demo'
+include 'consumer'
+include 'producer'
+include 'common'
+include 'fn-producer'
+include 'fn-consumer'
+

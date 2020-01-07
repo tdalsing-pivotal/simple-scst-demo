@@ -1,0 +1,20 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.8.RELEASE'
+    id 'com.google.cloud.tools.jib' version '1.8.0'
+}
+
+dependencies {
+    implementation(project(':common'))
+    implementation "org.springframework.cloud:spring-cloud-stream-binder-kafka"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+}
+
+jib {
+    to {
+        image = 'gcr.io/fe-tdalsing/producer'
+    }
+
+    container {
+        args = ['--spring.cloud.stream.kafka.binder.brokers=kafka-statefulset-0.kafka-service.default.svc.cluster.local,kafka-statefulset-1.kafka-service.default.svc.cluster.local,kafka-statefulset-2.kafka-service.default.svc.cluster.local']
+    }
+}
