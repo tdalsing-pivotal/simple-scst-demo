@@ -1,6 +1,5 @@
 package io.pivotal.kafka;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
@@ -9,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
 
+import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 @SpringBootApplication
 @Slf4j
@@ -31,21 +30,17 @@ public class KafkaBroker {
     @Bean
     public static EmbeddedKafkaBroker broker() throws Exception {
         log.info("broker");
+
+        InetAddress localHost = InetAddress.getLocalHost();
+        String hostName = localHost.getHostAddress();
+        String listeners = String.format("PLAINTEXT://%s:9092", hostName);
+        log.info("broker: listeners={}", listeners);
+
         EmbeddedKafkaBroker embeddedKafkaBroker = new EmbeddedKafkaBroker(1, false);
-        embeddedKafkaBroker.brokerProperties(convert(System.getProperties()));
-        embeddedKafkaBroker.kafkaPorts(9092);
+        Map<String, String> brokerProperties = new HashMap<>();
+        brokerProperties.put("listeners", listeners);
+        embeddedKafkaBroker.brokerProperties(brokerProperties);
         return embeddedKafkaBroker;
     }
 
-    private static Map<String, String> convert(Properties properties) throws Exception {
-        log.info("convert: properties={}", new ObjectMapper().writeValueAsString(properties));
-        Map<String, String> map = new HashMap<>();
-
-        for (Object key : properties.keySet()) {
-            String skey = key.toString();
-            map.put(skey, properties.getProperty(skey));
-        }
-
-        return map;
-    }
 }
