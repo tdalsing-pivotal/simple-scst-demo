@@ -6,3 +6,9 @@ spring:
       bindings:
         input:
           destination: scst-demo
+
+retry:
+  retryableSqlErrors:
+    - 12
+  retryableSqlStates:
+    - 13
