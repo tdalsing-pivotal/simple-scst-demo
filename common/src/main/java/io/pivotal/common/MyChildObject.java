@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import javax.validation.Valid;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -19,21 +16,11 @@ import static lombok.AccessLevel.PRIVATE;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = PRIVATE)
-public class MyObject {
+public class MyChildObject {
 
     @NotBlank
-    String id;
+    String description;
 
-    @NotBlank
-    String name;
-
-    @Max(1000)
-    int count;
-
-    @DecimalMax("1000.00")
-    double amount;
-
-    @NotNull
     @Valid
     MyChildObject childObject;
 }

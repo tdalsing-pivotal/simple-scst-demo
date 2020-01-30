@@ -33,6 +33,7 @@ subprojects {
         dependencies {
             dependency "org.springframework.cloud:spring-cloud-stream-binder-kafka:2.2.1.RELEASE"
             dependency "org.springframework.boot:spring-boot-starter-web:2.1.8.RELEASE"
+            dependency "org.apache.commons:commons-lang3:3.9"
         }
     }
 
