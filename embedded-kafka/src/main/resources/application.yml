@@ -1,4 +1,0 @@
-server.port: 8181
-
-broker.id: 100
-port: 9092

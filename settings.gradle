@@ -1,8 +1,5 @@
 rootProject.name = 'simple-scst-demo'
-include 'consumer'
-include 'producer'
 include 'common'
-include 'fn-producer'
-include 'fn-consumer'
-include 'embedded-kafka'
+include 'producer'
+include 'consumer'
 

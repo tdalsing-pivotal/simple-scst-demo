@@ -1,8 +1,0 @@
-server.port: 8104
-
-spring:
-  cloud:
-    stream:
-      bindings:
-        output:
-          destination: scst-demo

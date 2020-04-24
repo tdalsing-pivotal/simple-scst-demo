@@ -1,8 +1,9 @@
-server.port: 8102
+server.port: 8104
 
 spring:
   cloud:
     stream:
       bindings:
-        output:
+        source-out-0:
           destination: scst-demo
+          contentType: application/json
