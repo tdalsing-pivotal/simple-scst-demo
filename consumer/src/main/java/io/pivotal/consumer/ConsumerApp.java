@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import reactor.core.publisher.Flux;
 
 import java.util.function.Consumer;
 
@@ -18,8 +17,8 @@ public class ConsumerApp {
     }
 
     @Bean
-    public Consumer<Flux<MyObject>> consume() {
+    public Consumer<MyObject> consume() {
         log.info("consume");
-        return (flux) -> flux.subscribe(myObject -> log.info("consume: myObject={}", myObject));
+        return object -> log.info("consume: object = {}", object);
     }
 }
