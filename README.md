@@ -42,3 +42,35 @@ The following binders are provided:
 - [Solace PubSub](https://solace.com/products/event-broker/software/)
 
 Custom binders are relatively easy to write via the Binder SPI.
+
+## Running the Demo
+
+JDK 11+ must be installed to run the demo.
+
+This demo uses Kafka, so the first step is to get it running locally.  On Mac use Brew: `brew install kafka`.  This installs the Apache version.  
+Kafka uses Zookeeper for cluster management, which is included with the Brew install.  Kafka requires JDK 1.8+.
+
+To get the startup information use `brew info kafka`.  Note that the Brew service (`brew services start kafka`) is sometimes flaky, and doesn't 
+show what Kafka and Zookeeper are doing, so generally it's best to use the non-background services.  However, the recommended non-background 
+method shown in the info isn't always reliable either.  The reliable way to run Kafka is to run Zookeeper in one terminal:
+
+`zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties`
+
+Once that is up and running start the Kafka broker:
+
+`kafka-server-start /usr/local/etc/kafka/server.properties`
+
+Topics are automatically created by the SCSt applications when they are started.
+
+Once Zookeeper and Kafka are running, each of the applications can be started.  Either start them directly from the IDE or use the Gradle 
+`bootRun` task:
+
+Terminal 1:
+`./gradlew :consumer:bootRun`
+
+Terminal 2:
+`./gradlew :producer:bootRun`
+
+Send some data to the producer:
+
+`./post.sh`
