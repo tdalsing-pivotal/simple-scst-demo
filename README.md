@@ -74,3 +74,7 @@ Terminal 2:
 Send some data to the producer:
 
 `./post.sh`
+
+# Parking Lot
+
+DataHub token: eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6ImUxMDI1Zjk2LTA5MzEtNDgyNC1hNjkwLWRiNTc1MTkyYzNmYyIsInN1YiI6ImRhdGFodWIiLCJpc3MiOiJkYXRhaHViLW1ldGFkYXRhLXNlcnZpY2UifQ.IclkKeIFIVlNn7fDQJD6eQmZXk1RjF5yJIKOkdXpybs

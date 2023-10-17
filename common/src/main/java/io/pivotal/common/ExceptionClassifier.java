@@ -8,7 +8,7 @@ import org.springframework.retry.RetryPolicy;
 import org.springframework.retry.policy.NeverRetryPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 
-import javax.validation.ValidationException;
+import jakarta.validation.ValidationException;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.sql.SQLException;
